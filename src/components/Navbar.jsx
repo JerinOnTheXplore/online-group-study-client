@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
 import logo from '../assets/11051.jpg'
+import { AuthContext } from '../provider/AuthContext';
+import Loading from '../pages/Loading';
+import Swal from 'sweetalert2';
 
 const links = <>
   <li>
@@ -33,6 +36,22 @@ const links = <>
 </>;
 
 const Navbar = () => {
+  const {user,logout,loading} = useContext(AuthContext);
+  if(loading){
+    return <Loading></Loading>;
+  }
+  const handleLogout=()=>{
+      logout().then(()=>{
+        Swal.fire({
+          icon: 'success',
+          title: 'Logout Successful!',
+          showConfirmButton: false,
+          timer: 1500
+           });
+      }).catch((error)=>{
+         console.log(error);
+      })
+    }
     return (
         <div>
         <div className="navbar bg-transparent absolute top-0 left-0 w-full z-10 mt-7 px-2 md:px-32 lg:px-36">
@@ -63,10 +82,15 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end space-x-2">
-        <div className="dropdown dropdown-end">
-  <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-    <div className="w-10 h-10 rounded-full overflow-hidden">
-      <img src="https://img.icons8.com/?size=100&id=0lg0kb05hrOz&format=png&color=000000" alt="profile pic" />
+   {user ? (
+  <div className="flex items-center gap-2">
+    <div className="dropdown dropdown-end">
+  <label tabIndex={0}>
+    <div className="tooltip tooltip-bottom" data-tip={user.displayName || 'User'}>
+      <img
+        src={user.photoURL}
+        alt="User"
+        className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16  rounded-full border-2 border-purple-500"/>
     </div>
   </label>
   <ul tabIndex={0} className="mt-3 z-20 p-2 shadow menu menu-sm dropdown-content bg-black bg-opacity-80 rounded-box w-30 space-y-1">
@@ -88,8 +112,16 @@ const Navbar = () => {
     </li>
   </ul>
 </div>
-
-        <NavLink
+    <button
+      onClick={handleLogout}
+      className="btn btn-neutral text-white btn-outline border-2 border-purple-500 text-sm md:text-xl p-1 md:p-2 lg:p-3"
+    >
+      Logout
+    </button>
+  </div>
+) : (
+  <div className="flex gap-2">
+    <NavLink
   to="/login"
   className={({ isActive }) =>
     isActive
@@ -110,6 +142,8 @@ const Navbar = () => {
 >
   Register
 </NavLink>
+  </div>
+)}
       </div>
     </div>
         </div>

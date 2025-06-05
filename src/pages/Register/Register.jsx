@@ -1,10 +1,68 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router';
+import React, { useContext } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router';
 import Navbar from '../../components/Navbar';
 import { motion } from "motion/react"
 import bgImg from '../../assets/welcome image.jpg'
+import { AuthContext } from '../../provider/AuthContext';
+import Swal from 'sweetalert2';
+
 
 const Register = () => {
+  const {createUser,updateUser,setUser} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleRegister = e =>{
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    // console.log(name,email,photo,password);
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Weak Password',
+        text: 'Password must include uppercase, lowercase and be at least 6 characters long.',
+      });
+      return;
+    }
+
+    //create user
+    createUser(email,password)
+    .then(result=>{
+     const user = result.user;
+
+        updateUser({ displayName: name, photoURL: photo })
+        .then(()=>{
+          setUser({...user,displayName: name, photoURL: photo});
+          
+        Swal.fire({
+        icon: 'success',
+        title: 'Registration Successful!',
+        text: 'Welcome to Edumates!',
+        }).then(() => {
+        navigate('/');
+          });
+        })
+        .catch((error)=>{
+           setUser(user);
+           Swal.fire({
+           icon: 'error',
+           title: 'Profile Update Failed',
+           text: error,
+            });
+        }) 
+    })
+    .catch(error=>{
+       Swal.fire({
+          icon: 'error',
+          title: 'Registration Failed',
+          text: error.message,
+        });
+    })
+  }
     return (
         <div>
         <Navbar></Navbar>
@@ -23,7 +81,7 @@ const Register = () => {
           <h2 className="text-3xl font-bold text-center text-purple-800 mb-6">
              Register to EduMates
           </h2>
-          <form className="space-y-4">
+          <form onSubmit={handleRegister} className="space-y-4">
             {/* Name */}
             <div>
               <label className="block text-purple-800 font-semibold mb-1">Name</label>
