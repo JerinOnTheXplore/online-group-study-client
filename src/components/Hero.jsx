@@ -6,7 +6,7 @@ const Hero = () => {
     return (
         <div>
       <div
-        className="hero min-h-96 md:min-h-screen bg-cover bg-center"
+        className="hero min-h-96 md:min-h-screen  bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${heroBg})`,
         }}
@@ -17,10 +17,14 @@ const Hero = () => {
             <motion.h1 
              initial={{scale: 0.5, opacity:0}}
              animate= {{scale: 1, opacity:1}}
-             transition={{duration:1.2, type: "spring", stiffness:30, repeat:Infinity}}
-            className="text-4xl md:text-5xl font-bold leading-tight drop-shadow-lg text-white">
+             transition={{duration:1.2, type: "spring", stiffness:30}}
+            className="text-4xl md:text-5xl font-bold  drop-shadow-lg text-white">
               Study Smarter, <motion.span
-               animate={{color:["#f472b6", "#c084fc", "#60a5fa", "#f472b6"]}}
+               animate={{color:["#f472b6", "#c084fc", "#60a5fa", "#f472b6",
+               "#ec4899",
+               "#d8b4fe",
+               "#38bdf8"
+               ]}}
                transition={{ duration: 4, repeat: Infinity }}
               >Together!</motion.span>
             </motion.h1>
@@ -62,8 +66,8 @@ const Hero = () => {
       to="/assignments"
       className={({ isActive }) =>
         isActive
-          ? "text-white bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 text-xl px-3 py-1 rounded"
-          : "text-white border-2 border-pink-200 px-2 rounded hover:text-stone-300 font-semibold text-xl"
+          ? "text-white bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 text-xl px-3 py-2 rounded"
+          : "text-white border-2 border-purple-400 px-2 rounded py-1 hover:text-stone-300 font-semibold text-xl"
       }
     >
       Assignments

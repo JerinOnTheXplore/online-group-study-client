@@ -51,7 +51,7 @@ const Navbar = () => {
         </div>
         
         <div className='flex items-center'>
-        <img className='w-6 md:w-16 lg:w-20 rounded' src={logo} alt="" />
+        <img className='w-6 md:w-16 lg:w-20 rounded-tl-[5px] md:rounded-tl-[15px] rounded-br-[5px] md:rounded-br-[15px]' src={logo} alt="" />
         <h2 className='text-base md:text-4xl text-white font-bold ml-2'>𝓔𝓭𝓾𝓜𝓪𝓽𝓮𝓼</h2>
         </div>
       </div>
@@ -90,14 +90,14 @@ const Navbar = () => {
 </div>
 
         <NavLink
-  to="/signIn"
+  to="/login"
   className={({ isActive }) =>
     isActive
       ? "font-semibold text-base md:text-xl lg:text-xl text-white px-1 py-2 rounded bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 shadow-lg shadow-purple-300"
       : "font-semibold text-white px-1 py-2 rounded text-base md:text-xl lg:text-xl hover:brightness-110 transition-all duration-300"
   }
 >
-  SignIn
+  LogIn
 </NavLink>
 
 <NavLink
@@ -108,7 +108,7 @@ const Navbar = () => {
       : "font-semibold text-base md:text-xl lg:text-xl  text-white px-1 py-2 rounded hover:brightness-110 transition-all duration-300"
   }
 >
-  Registration
+  Register
 </NavLink>
       </div>
     </div>
