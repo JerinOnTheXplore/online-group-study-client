@@ -8,6 +8,7 @@ import Login from "../pages/Login/Login";
 import Assignments from "../pages/Home/Assignments";
 import AssignmentCard from "../components/AssignmentCard";
 import AllAssignments from "../pages/AllAssignments";
+import AssignmentDetails from "../pages/Home/AssignmentDetails";
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,12 @@ const router = createBrowserRouter([
       {
         path: "/assignments",
         Component:AllAssignments,
+      },
+      {
+        path: "/assignments/:id", 
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/assignments/${params.id}`),
+        Component:AssignmentDetails,
       },
     ]
   },

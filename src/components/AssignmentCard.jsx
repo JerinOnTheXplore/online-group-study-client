@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const AssignmentCard = ({assignment,index}) => {
   const { thumbnail, title, marks, difficulty, objective } = assignment;
@@ -29,9 +30,9 @@ const AssignmentCard = ({assignment,index}) => {
         </div>
       </div>
       <div className="mt-3 flex justify-between text-sm font-medium">
-        <button className="text-purple-700">View</button>
-        <button className="text-pink-700">Update</button>
-        <button className="text-red-500">Delete</button>
+        <Link to={`/assignments/${assignment._id}`} className="text-purple-700">View</Link>
+        <Link className="text-pink-700">Update</Link>
+        <Link className="text-red-500">Delete</Link>
       </div>
     </div>   
         </div>
