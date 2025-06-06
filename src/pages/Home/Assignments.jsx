@@ -15,9 +15,9 @@ const Assignments = ({assignmentsPromise}) => {
   : sortedAssignments;
     return (
         <div>
-        <div className="px-4 py-6 max-w-6xl mx-auto">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold">Assignments</h2>
+        <div className="px-4 py-6 max-w-4xl md:max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-pink-700 mb-10">Assignments</h2>
+      <div className="flex justify-between items-center mb-4 pl-5">
         <select
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value)}
@@ -28,6 +28,7 @@ const Assignments = ({assignmentsPromise}) => {
           <option value="Medium">Medium</option>
           <option value="Hard">Hard</option>
         </select>
+        
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
