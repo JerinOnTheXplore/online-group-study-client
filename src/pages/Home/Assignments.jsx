@@ -1,14 +1,16 @@
 import React, { use, useState } from 'react';
 import AssignmentCard from '../../components/AssignmentCard';
 
-const Assignments = ({assignmentsPromise}) => {
-  const assignments = use(assignmentsPromise);
+const Assignments = ({assignments}) => {
   const [showAll, setShowAll] = useState(false);
   const [sortOrder, setSortOrder] = useState('All');
 
   const sortedAssignments = assignments
-    .filter(a => sortOrder === 'All' || a.difficulty === sortOrder)
-    .sort((a, b) => a.marks - b.marks);
+  .filter(a =>
+    sortOrder === 'All' ||
+    a.difficulty?.toLowerCase().trim() === sortOrder.toLowerCase()
+  )
+  .sort((a, b) => a.marks - b.marks);
 
   const displayAssignments = !showAll
   ? sortedAssignments.slice(0, 5)

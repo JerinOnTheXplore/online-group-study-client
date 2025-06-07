@@ -53,13 +53,11 @@ const AssignmentDetails = () => {
     return (
          <div className='bg-gradient-to-r from-purple-500 to-cyan-500'>
       <div className="max-w-4xl mx-auto px-4 py-10 pt-40">
-        {/* header */}
         <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-blue-400 rounded-t-3xl text-white shadow-xl p-6 text-center">
           <h2 className="text-3xl font-bold">{assignment.title}</h2>
           <p className="mt-1 text-md italic">{assignment.objective}</p>
         </div>
 
-        {/* assignment details card */}
         <div className="bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-100 rounded-b-3xl shadow-xl p-6 space-y-5 border-t-0">
           <img src={assignment.thumbnail} alt={assignment.title} className="w-full h-64 object-cover rounded-lg" />
 
@@ -94,7 +92,6 @@ const AssignmentDetails = () => {
         </div>
       </div>
 
-      {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-purple-300 bg-opacity-60 flex items-center justify-center z-50">
           <div className="bg-white dark:bg-gray-300 rounded-xl shadow-2xl w-full max-w-lg p-6 relative">
@@ -110,7 +107,7 @@ const AssignmentDetails = () => {
                 onChange={(e) => setFormData({ ...formData, link: e.target.value })}
               />
               <textarea
-                placeholder="Quick note (optional)"
+                placeholder="Quick note"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                 value={formData.note}
                 onChange={(e) => setFormData({ ...formData, note: e.target.value })}
