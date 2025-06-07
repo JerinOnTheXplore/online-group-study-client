@@ -31,7 +31,7 @@ const AssignmentCard = ({assignment,index}) => {
       </div>
       <div className="mt-3 flex justify-between text-sm font-medium">
         <Link to={`/assignments/${assignment._id}`} className="text-purple-700">View</Link>
-        <Link className="text-pink-700">Update</Link>
+        <Link to={`/assignments/update/${assignment._id}`} className="text-pink-700">Update</Link>
         <Link className="text-red-500">Delete</Link>
       </div>
     </div>   
