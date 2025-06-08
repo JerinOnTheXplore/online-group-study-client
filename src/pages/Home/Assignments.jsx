@@ -1,7 +1,7 @@
 import React, { use, useState } from 'react';
 import AssignmentCard from '../../components/AssignmentCard';
 
-const Assignments = ({assignments}) => {
+const Assignments = ({assignments,setAssignments}) => {
   const [showAll, setShowAll] = useState(false);
   const [sortOrder, setSortOrder] = useState('All');
 
@@ -45,7 +45,7 @@ const Assignments = ({assignments}) => {
           : ''
       }
     >
-      <AssignmentCard assignment={assignment} index={i} />
+      <AssignmentCard assignment={assignment} index={i} setAssignments={setAssignments} />
     </div>
   ))}
 </div>

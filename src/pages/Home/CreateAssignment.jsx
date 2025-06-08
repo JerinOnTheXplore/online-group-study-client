@@ -1,11 +1,13 @@
 import { div } from 'motion/react-client';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../provider/AuthContext';
 
 const CreateAssignment = () => {
+ const {user} = useContext(AuthContext);
  const [dueDate, setDueDate] = useState(new Date());
  const navigate = useNavigate();
  const handleSubmit = async (e)=>{
@@ -24,6 +26,7 @@ const CreateAssignment = () => {
     thumbnail,
     difficulty,
     dueDate,
+    createEmail: user?.email,
   };
 
   const res = await fetch("http://localhost:3000/assignments",{

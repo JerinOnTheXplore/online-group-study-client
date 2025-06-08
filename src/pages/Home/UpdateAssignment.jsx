@@ -41,9 +41,9 @@ const UpdateAssignment = () => {
    }
  }
     return (
-        <div>
+        <div className='min-h-screen bg-gradient-to-r from-purple-400 to-cyan-500 flex items-center justify-center px-4'>
         <div className="pt-28 pb-16 px-4 max-w-3xl mx-auto">
-      <h2 className="text-3xl font-bold text-center text-purple-700 mb-8">Update Assignment</h2>
+      <h2 className="text-3xl font-bold text-center text-purple-600 mb-8">Update Assignment</h2>
       <form onSubmit={handleUpdate} className="space-y-4 bg-purple-50 p-6 rounded-xl shadow-lg">
         <input type="text" name="title" value={formData.title} onChange={handleChange} className="w-full p-2 border rounded" placeholder="Title" required />
         <input type="text" name="thumbnail" value={formData.thumbnail} onChange={handleChange} className="w-full p-2 border rounded" placeholder="Thumbnail URL" required />
