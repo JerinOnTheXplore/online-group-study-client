@@ -11,6 +11,8 @@ import AllAssignments from "../pages/AllAssignments";
 import AssignmentDetails from "../pages/Home/AssignmentDetails";
 import CreateAssignment from "../pages/Home/CreateAssignment";
 import UpdateAssignment from "../pages/Home/UpdateAssignment";
+import MySubmission from "../pages/Home/MySubmission";
+import PendingAssignment from "../pages/Home/PendingAssignment";
 
 
 const router = createBrowserRouter([
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: "/create-assignment",
         Component: CreateAssignment,
+      },
+      {
+        path: "/my-submissions",
+        Component: MySubmission,
+      },
+      {
+        path: "/pending-assignments",
+        Component:PendingAssignment,
       },
       {
         path: "/assignments/update/:id",

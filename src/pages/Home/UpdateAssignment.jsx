@@ -14,7 +14,20 @@ const UpdateAssignment = () => {
 
  const handleUpdate = async (e)=>{
    e.preventDefault();
+   const { title,thumbnail, marks, } = formData;
     const { _id, ...updatedData } = formData;
+ if (!title.trim() || title.trim().length < 5) {
+    return Swal.fire('Invalid Title', 'Title must be at least 5 characters long.', 'warning');
+  }
+ 
+ if (isNaN(marks) || parseInt(marks) <= 0) {
+    return Swal.fire('Invalid Marks', 'Marks should be a positive number.', 'warning');
+  }
+
+  const urlPattern = /^(https?:\/\/)?[\w.-]+\.[a-z]{2,}(\/\S*)?$/i;
+ if (!urlPattern.test(thumbnail.trim())) {
+    return Swal.fire('Invalid URL', 'Please enter a valid thumbnail URL.', 'warning');
+  }
    const res = await fetch(`http://localhost:3000/assignments/${assignment._id}`,{
     method: 'PUT',
     headers: {

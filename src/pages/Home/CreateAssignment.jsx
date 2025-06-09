@@ -13,11 +13,23 @@ const CreateAssignment = () => {
  const handleSubmit = async (e)=>{
    e.preventDefault();
    const form = e.target;
-   const title = form.title.value;
-   const description = form.description.value;
-   const marks = form.marks.value;
+   const title = form.title.value.trim();
+   const description = form.description.value.trim();
+   const marks = parseInt(form.marks.value);
    const thumbnail = form.thumbnail.value;
    const difficulty = form.difficulty.value;
+
+ if (title.length < 5) {
+    return Swal.fire('Error', 'Title must be at least 5 characters.', 'error');
+  }
+
+  if (description.length < 20) {
+    return Swal.fire('Error', 'Description must be at least 20 characters.', 'error');
+  }
+
+  if (isNaN(marks) || marks <= 0) {
+    return Swal.fire('Error', 'Marks must be a positive number.', 'error');
+  }
 
   const newAssignment = {
     title,

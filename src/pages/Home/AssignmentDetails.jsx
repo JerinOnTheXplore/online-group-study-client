@@ -18,11 +18,15 @@ const AssignmentDetails = () => {
     e.preventDefault();
     const submission = {
       assignmentId: assignment._id,
+      userEmail: user?.email,
       email: user?.email,
+      userName: user?.displayName,
       link: formData.link,
       note: formData.note,
       status: 'pending',
       submittedAt: new Date(),
+      obtainedMarks: null,
+      feedback: null 
     };
 
    const res = await fetch('http://localhost:3000/submitted-assignments',{
