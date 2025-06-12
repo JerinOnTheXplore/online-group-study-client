@@ -72,6 +72,7 @@ const Navbar = () => {
         <div className='flex items-center'>
         <img className='w-6 md:w-16 lg:w-20 rounded-tl-[5px] md:rounded-tl-[15px] rounded-br-[5px] md:rounded-br-[15px]' src={logo} alt="" />
         <h2 className='text-base md:text-4xl text-white font-bold ml-2'>𝓔𝓭𝓾𝓜𝓪𝓽𝓮𝓼</h2>
+        <div className='ml-3'><input type="checkbox" value="cupcake" className="toggle theme-controller" /></div>
         </div>
       </div>
 
