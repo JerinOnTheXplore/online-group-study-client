@@ -10,7 +10,9 @@ const MySubmission = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch(`http://localhost:3000/submitted-assignments?email=${user.email}`)
+    fetch(`http://localhost:3000/submitted-assignments?email=${user.email}`,{
+      credentials: 'include'
+    })
       .then(res => res.json())
       .then(subs => {
         setSubmissions(subs);
@@ -62,14 +64,14 @@ const MySubmission = () => {
         const a = assignmentMap[s.assignmentId] || {};
           return (
            <tr key={s._id} className="even:bg-gray-50">
-            <td className="border px-4 py-2">{a.title || 'Unknown Assignment'}</td>
-            <td className="border px-4 py-2">
+            <td className="border px-4 py-2 text-primary">{a.title || 'Unknown Assignment'}</td>
+            <td className="border px-4 py-2 text-primary">
             {new Date(s.submittedAt).toLocaleDateString()}
             </td>
-            <td className="border px-4 py-2 capitalize">{s.status}</td>
-            <td className="border px-4 py-2 text-center">{a.marks ?? '-'}</td>
-            <td className="border px-4 py-2 text-center">{s.obtainedMarks ?? '-'}</td>
-            <td className="border px-4 py-2">{s.feedback ?? '-'}</td>
+            <td className="border px-4 py-2 capitalize text-primary">{s.status}</td>
+            <td className="border px-4 py-2 text-center text-primary">{a.marks ?? '-'}</td>
+            <td className="border px-4 py-2 text-center text-primary">{s.obtainedMarks ?? '-'}</td>
+            <td className="border px-4 py-2 text-primary">{s.feedback ?? '-'}</td>
           </tr>
         );
       })}

@@ -11,7 +11,9 @@ const PendingAssignment = () => {
  const [assignments, setAssignments] = useState({});
 
  useEffect(() => {
-    fetch('http://localhost:3000/submitted-assignments')
+    fetch('http://localhost:3000/submitted-assignments',{
+      credentials: 'include'
+    })
       .then(res => res.text())
       .then(text => {
         console.log(data);
