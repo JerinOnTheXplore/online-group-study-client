@@ -29,7 +29,7 @@ const AssignmentDetails = () => {
       feedback: null 
     };
 
-   const res = await fetch('http://localhost:3000/submitted-assignments',{
+   const res = await fetch('https://online-group-study-server-delta.vercel.app/submitted-assignments',{
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(submission),
@@ -106,13 +106,13 @@ const AssignmentDetails = () => {
                 type="url"
                 required
                 placeholder="Google Docs Link"
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+                className="w-full px-4 py-2 border font-semibold text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
                 value={formData.link}
                 onChange={(e) => setFormData({ ...formData, link: e.target.value })}
               />
               <textarea
                 placeholder="Quick note"
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                className="w-full px-4 py-2 text-primary font-semibold border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                 value={formData.note}
                 onChange={(e) => setFormData({ ...formData, note: e.target.value })}
               />

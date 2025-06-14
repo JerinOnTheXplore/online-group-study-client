@@ -41,7 +41,7 @@ const CreateAssignment = () => {
     createEmail: user?.email,
   };
 
-  const res = await fetch("http://localhost:3000/assignments",{
+  const res = await fetch("https://online-group-study-server-delta.vercel.app/assignments",{
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(newAssignment),

@@ -10,7 +10,7 @@ const MySubmission = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch(`http://localhost:3000/submitted-assignments?email=${user.email}`,{
+    fetch(`https://online-group-study-server-delta.vercel.app/submitted-assignments?email=${user.email}`,{
       credentials: 'include'
     })
       .then(res => res.json())
@@ -22,7 +22,7 @@ const MySubmission = () => {
 
         return Promise.all(
           uniqueIds.map(id =>
-            fetch(`http://localhost:3000/assignments/${id}`).then(res => res.json())
+            fetch(`https://online-group-study-server-delta.vercel.app/assignments/${id}`).then(res => res.json())
           )
         );
       })

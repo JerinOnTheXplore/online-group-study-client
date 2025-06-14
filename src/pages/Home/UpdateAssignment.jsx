@@ -28,7 +28,7 @@ const UpdateAssignment = () => {
  if (!urlPattern.test(thumbnail.trim())) {
     return Swal.fire('Invalid URL', 'Please enter a valid thumbnail URL.', 'warning');
   }
-   const res = await fetch(`http://localhost:3000/assignments/${assignment._id}`,{
+   const res = await fetch(`https://online-group-study-server-delta.vercel.app/assignments/${assignment._id}`,{
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

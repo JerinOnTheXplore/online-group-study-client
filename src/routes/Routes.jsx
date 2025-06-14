@@ -14,6 +14,8 @@ import UpdateAssignment from "../pages/Home/UpdateAssignment";
 import MySubmission from "../pages/Home/MySubmission";
 import PendingAssignment from "../pages/Home/PendingAssignment";
 import PrivateRoute from "../provider/PrivateRoute";
+import Error from "../pages/Home/Error";
+
 
 
 const router = createBrowserRouter([
@@ -28,7 +30,7 @@ const router = createBrowserRouter([
       {
         path: "/assignments",
         Component:AllAssignments,
-        loader: () =>fetch('http://localhost:3000/assignments').then(res=>res.json()),
+        loader: () =>fetch('https://online-group-study-server-delta.vercel.app/assignments').then(res=>res.json()),
       },
       {
         path: "/create-assignment",
@@ -47,12 +49,12 @@ const router = createBrowserRouter([
       {
         path: "/assignments/update/:id",
         Component:UpdateAssignment,
-        loader: ({params})=>fetch(`http://localhost:3000/assignments/${params.id}`),
+        loader: ({params})=>fetch(`https://online-group-study-server-delta.vercel.app/assignments/${params.id}`),
       },
       {
         path: "/assignments/:id", 
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/assignments/${params.id}`),
+          fetch(`https://online-group-study-server-delta.vercel.app/assignments/${params.id}`),
         element: <PrivateRoute>
           <AssignmentDetails></AssignmentDetails>
         </PrivateRoute>,
@@ -66,7 +68,12 @@ const router = createBrowserRouter([
   {
     path:"/login",
     Component:Login,
+  },
+  {
+    path:"/*",
+    Component:Error
   }
+  
 ]);
 
 export default router;

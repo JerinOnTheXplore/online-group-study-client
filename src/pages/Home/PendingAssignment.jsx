@@ -11,52 +11,61 @@ const PendingAssignment = () => {
  const [assignments, setAssignments] = useState({});
 
  useEffect(() => {
-    fetch('http://localhost:3000/submitted-assignments',{
-      credentials: 'include'
-    })
-      .then(res => res.text())
-      .then(text => {
-        console.log(data);
-         const data = JSON.parse(text);
-        const filtered = data.filter(
-          item => item.status === 'pending' && item.userEmail !== user?.email
-        );
-        setPending(filtered);
+    fetch('https://online-group-study-server-delta.vercel.app/all-pending-submissions', {
+    method: 'Get',
+  credentials: 'include'
+})
+  .then(res => res.json())
+  .then(data => {
+    const filtered = data;
+    setPending(filtered);
 
-        const assignmentIds = [...new Set(filtered.map(item => item.assignmentId))];
-
-        Promise.all(
-          assignmentIds.map(id =>
-            fetch(`http://localhost:3000/assignments/${id}`).then(res => res.json())
-          )
-        ).then(results => {
-          const map = {};
-          results.forEach(a => (map[a._id] = a));
-          setAssignments(map);
-        });
-      });
+    const assignmentIds = [...new Set(filtered.map(item => item.assignmentId))];
+    Promise.all(
+      assignmentIds.map(id =>
+        fetch(`https://online-group-study-server-delta.vercel.app/assignments/${id}`).then(res => res.json())
+      )
+    ).then(results => {
+      const map = {};
+      results.forEach(a => (map[a._id] = a));
+      setAssignments(map);
+    });
+  });
   }, [user?.email]);
 
-  const handleMark = () =>{
-    fetch(`http://localhost:3000/submitted-assignments/mark/${selected._id}`,{
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        obtainedMarks: marks,
-        feedback,
-        status: 'completed',
-        markerEmail: user.email,
-      }),
+  const handleMarkSubmit = (e) => {
+  e.preventDefault();
+
+  fetch(`https://your-server.com/api/submitted-assignments/mark/${selected._id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      // authorization: `Bearer ${token}` // if using JWT
+    },
+    body: JSON.stringify({
+      obtainedMarks: marks,
+      feedback,
+      markerEmail: user.email
     })
-    .then(res => res.json())
-    .then(data =>{
-       Swal.fire('Marked!', 'The assignment has been marked.', 'success');
-        setSelected(null);
-        setMarks('');
-        setFeedback('');
-        setPending(prev => prev.filter(p => p._id !== selected._id));
-    });
-  };
+  })
+  .then(res => {
+    if (!res.ok) {
+      throw new Error('Failed to mark assignment');
+    }
+    return res.json();
+  })
+  .then(data => {
+    Swal.fire('Marked!', 'The assignment has been marked.', 'success');
+    setSelected(null);
+    setMarks('');
+    setFeedback('');
+    setPending(prev => prev.filter(p => p._id !== selected._id));
+  })
+  .catch(err => {
+    Swal.fire('Error!', err.message, 'error');
+  });
+};
+
 
     return (
         <div>
@@ -98,7 +107,7 @@ const PendingAssignment = () => {
           </div>
         )}
 
-        {/* Modal */}
+        {/* modal */}
         {selected && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
@@ -137,7 +146,7 @@ const PendingAssignment = () => {
                   Cancel
                 </button>
                 <button
-                  onClick={handleMark}
+                  onClick={handleMarkSubmit}
                   className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded"
                 >
                   Submit

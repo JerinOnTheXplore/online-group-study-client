@@ -19,6 +19,12 @@ const AssignmentCard = ({assignment,index,setAssignments}) => {
   };
 
  const handleDelete = async ()=>{
+
+  if (!user || user.email !== createEmail) {
+    Swal.fire('Unauthorized', 'You must be the creator to delete this assignment.', 'error');
+    return;
+  }
+
     const confirm = await Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to recover this assignment!",
@@ -30,7 +36,7 @@ const AssignmentCard = ({assignment,index,setAssignments}) => {
     });
 
  if(confirm.isConfirmed){
-    const res = await fetch(`http://localhost:3000/assignments/${_id}?userEmail=${user.email}`,{
+    const res = await fetch(`https://online-group-study-server-delta.vercel.app/assignments/${_id}?userEmail=${user.email}`,{
       method: 'DELETE',  
     });
   const data = await res.json();
@@ -60,12 +66,19 @@ const AssignmentCard = ({assignment,index,setAssignments}) => {
       </div>
       <div className="mt-3 flex justify-between text-sm font-medium">
         <Link to={`/assignments/${assignment._id}`} className="text-purple-700">View</Link>
-        <Link to={`/assignments/update/${assignment._id}`} className="text-pink-700">Update</Link>
         {
-         user?.email === createEmail && (
-          <button onClick={handleDelete} className="text-red-500">Delete</button>
-         )
-        }
+    user?.email === createEmail ? (
+      <>
+        <Link to={`/assignments/update/${assignment._id}`} className="text-pink-700">Update</Link>
+        <button onClick={handleDelete} className="text-red-500">Delete</button>
+      </>
+    ) : (
+      <>
+        <span className="text-gray-400 cursor-not-allowed" title="Only the creator can update this.">Update</span>
+        <span onClick={handleDelete} className="text-gray-400 cursor-not-allowed" title="Only the creator can delete this.">Delete</span>
+      </>
+    )
+  }
       </div>
     </div>   
         </div>
