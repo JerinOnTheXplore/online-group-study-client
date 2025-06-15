@@ -36,11 +36,10 @@ const PendingAssignment = () => {
   const handleMarkSubmit = (e) => {
   e.preventDefault();
 
-  fetch(`https://your-server.com/api/submitted-assignments/mark/${selected._id}`, {
+  fetch(`https://online-group-study-server-delta.vercel.app/api/submitted-assignments/mark/${selected._id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      // authorization: `Bearer ${token}` // if using JWT
     },
     body: JSON.stringify({
       obtainedMarks: marks,
@@ -89,9 +88,9 @@ const PendingAssignment = () => {
               <tbody>
                 {pending.map(sub => (
                   <tr key={sub._id} className="even:bg-gray-50">
-                    <td className="border px-4 py-2">{assignments[sub.assignmentId]?.title || 'N/A'}</td>
-                    <td className="border px-4 py-2 text-center">{assignments[sub.assignmentId]?.marks}</td>
-                    <td className="border px-4 py-2 text-center">{sub.userEmail}</td>
+                    <td className="border px-4 py-2 text-primary">{assignments[sub.assignmentId]?.title || 'N/A'}</td>
+                    <td className="border px-4 py-2 text-center text-primary">{assignments[sub.assignmentId]?.marks}</td>
+                    <td className="border px-4 py-2 text-center text-primary">{sub.userEmail}</td>
                     <td className="border px-4 py-2 text-center">
                       <button
                         onClick={() => setSelected(sub)}
@@ -129,13 +128,13 @@ const PendingAssignment = () => {
                 placeholder="Give marks"
                 value={marks}
                 onChange={e => setMarks(e.target.value)}
-                className="w-full border p-2 rounded mb-3"
+                className="w-full border p-2 rounded mb-3 text-primary"
               />
               <textarea
                 placeholder="Give feedback"
                 value={feedback}
                 onChange={e => setFeedback(e.target.value)}
-                className="w-full border p-2 rounded mb-3"
+                className="w-full border p-2 rounded mb-3 text-primary"
               ></textarea>
 
               <div className="flex justify-end gap-2">
