@@ -1,5 +1,9 @@
 # 🎓 Edumate - Online Group Study Platform
 
+<img src="https://i.ibb.co.com/rD5KYPj/visitor.png" alt="study Image" style="width: 30%; border-radius: 15px; filter: brightness(0.8);" />
+
+ **Overview:** Facilitates collaborative group study with secure login and role-based content management
+
 A collaborative MERN stack platform designed for students to create, submit, and assess group study assignments.
 
 🌐 **Live Site:** [https://online-group-study-e3eaf.web.app](https://online-group-study-e3eaf.web.app)
@@ -41,6 +45,15 @@ Edumate enables learners to:
   Mobile-first layout that adapts across all devices.
 
 ---
+
+ **Core Features:**
+
+  ⬛⬜  **JWT-Based Authentication:** Secure login & registration system with role-based access.
+  
+  ⬛⬜  **Submission System:** Students can submit answers with a Google Docs link and note. Submissions are initially marked as "Pending".
+
+**Dependencies:** react-router, Swiper
+
 
 ## 🛠️ Tech Stack
 
