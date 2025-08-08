@@ -1,6 +1,6 @@
 # 🎓 Edumate - Online Group Study Platform
 
-<img src="https://i.ibb.co.com/rD5KYPj/visitor.png" alt="study Image" style="width: 30%; border-radius: 15px; filter: brightness(0.8);" />
+<img src="https://i.ibb.co.com/rD5KYPj/visitor.png" alt="study Image" style="width: 100%; border-radius: 15px; filter: brightness(0.8);" />
 
  **Overview:** Facilitates collaborative group study with secure login and role-based content management
 
