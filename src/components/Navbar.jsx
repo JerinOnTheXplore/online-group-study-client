@@ -17,7 +17,7 @@ import {
   FiSettings,
 } from "react-icons/fi";
 
-import { FaBookOpen, FaChalkboardTeacher, FaGraduationCap, FaUserPlus } from "react-icons/fa";
+import { FaBookOpen, FaChalkboardTeacher, FaGraduationCap, FaSearch, FaUserPlus } from "react-icons/fa";
 
 import { AuthContext } from "../provider/AuthContext";
 
@@ -43,7 +43,6 @@ const Navbar = () => {
       .catch((err) => console.error(err));
   };
 
-  // Updated mainNavLinks with active state styling
   const mainNavLinks = (
     <>
       <NavLink
@@ -100,7 +99,6 @@ const Navbar = () => {
     </>
   );
 
-  // Dashboard links shown after clicking user image (only logged in)
   const dashboardLinks = (
     <>
       <NavLink
@@ -112,7 +110,7 @@ const Navbar = () => {
               : "hover:bg-emerald-500 hover:text-white"
           }`
         }
-        onClick={() => setDashboardMenuOpen(false)} // close menu after click
+        onClick={() => setDashboardMenuOpen(false)}
       >
         <FiPlusCircle /> Create Assignment
       </NavLink>
@@ -167,7 +165,6 @@ const Navbar = () => {
       {/* Header */}
       <header className="w-full border-b border-b-gray-200 bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-[1400px] mx-6 lg:mx-16 px-6 md:px-12 py-4 flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0 min-h-[80px]">
-          {/* Left: Logo + Auth */}
           <div className="flex flex-col md:flex-row md:items-center space-y-3 md:space-y-0 md:space-x-8">
             <Link to="/" className="flex items-center gap-3">
               <div className="text-emerald-800"><FaChalkboardTeacher size={30} title="Teaching" /></div>
@@ -176,7 +173,6 @@ const Navbar = () => {
               </span>
             </Link>
 
-            {/* Auth Buttons removed from here as per your request */}
           </div>
 
           {/* Search */}
@@ -184,14 +180,14 @@ const Navbar = () => {
             <div className="flex border border-gray-300 rounded shadow-sm overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
               <input
                 type="search"
-                placeholder="Search assignments or topics..."
+                placeholder="Search assignments"
                 className="flex-grow px-4 py-3 text-gray-700 text-sm focus:outline-none"
               />
               <button
                 type="submit"
                 className="bg-emerald-400 text-white px-6 py-3 rounded hover:bg-emerald-500 transition"
               >
-                Search
+                <FaSearch/>
               </button>
             </div>
           </form>
@@ -215,11 +211,10 @@ const Navbar = () => {
             </span>
           </div>
 
-          {/* Hamburger Menu (small & medium screens only) */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setDrawerOpen(!drawerOpen)}
-              className="text-blue-600 border border-blue-600 rounded px-4 py-1 text-sm font-semibold hover:bg-blue-600 hover:text-white transition flex items-center gap-2"
+              className="text-emerald-700 border border-emerald-600 rounded px-4 py-1 text-sm font-semibold hover:bg-emerald-600 hover:text-white transition flex items-center gap-2"
               aria-label="Toggle menu"
             >
               {drawerOpen ? <FiX size={20} /> : <FiMenu size={20} />}
@@ -227,7 +222,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Main Navbar Links (md+) */}
         <nav className="max-w-[1400px] mx-6 lg:mx-16 px-6 md:px-12 py-4 border-t border-dashed border-gray-400 flex justify-between bg-white min-h-[60px] hidden md:flex">
           <ul className="flex items-center space-x-12 font-medium text-gray-700">
             {mainNavLinks}
@@ -235,13 +229,13 @@ const Navbar = () => {
         </nav>
       </header>
 
-      {/* Dashboard Sidebar (large screens, always visible) */}
+      {/* Dashboard Sidebar */}
       <aside className="hidden lg:flex fixed right-0 top-[148px] sm:w-[200px] md:w-[200px] lg:w-[300px] h-[calc(100vh-148px)] bg-white shadow-lg border-l border-gray-200 flex-col z-40 overflow-y-auto rounded-l-md p-6">
   <h2 className="flex items-center gap-2 text-emerald-600 text-xl font-bold mb-6 border-l-4 border-emerald-600 pl-3 drop-shadow-sm">
     <FiGrid size={24} /> Dashboard
   </h2>
 
-  {/* New always visible links for everyone */}
+  
   <nav className="flex flex-col gap-3 mb-6">
     <NavLink
       to="/quiz"
@@ -284,7 +278,6 @@ const Navbar = () => {
     </>
   ) : (
     <>
-      {/* User Image + Name */}
       <button
         onClick={() => setDashboardMenuOpen(!dashboardMenuOpen)}
         className="flex items-center gap-3 mb-6 focus:outline-none"
@@ -299,10 +292,10 @@ const Navbar = () => {
         <span className="font-semibold">{user.displayName || "User"}</span>
       </button>
 
-      {/* Dashboard links only if toggled */}
+      {/* Dashboard links if toggled */}
       {dashboardMenuOpen && (
         <nav className="flex flex-col gap-3">
-          {dashboardLinks /* includes Create Assignment, My Attempted, Pending */}
+          {dashboardLinks}
           <button
             onClick={handleLogout}
             className="mt-6 flex items-center gap-2 px-3 py-2 bg-red-600 rounded hover:bg-red-700 text-white transition"
@@ -338,14 +331,14 @@ const Navbar = () => {
           <div className="flex border border-gray-300 rounded shadow-sm overflow-hidden focus-within:ring-2 focus-within:ring-emerald-500">
             <input
               type="search"
-              placeholder="Search assignments or topics..."
+              placeholder="Search assignments"
               className="flex-grow px-4 py-2 text-gray-700 text-sm focus:outline-none"
             />
             <button
               type="submit"
-              className="bg-emerald-400 text-white px-4 py-2 rounded-r hover:bg-emerald-500 transition"
+              className="bg-emerald-400 text-white px-2 py-2 rounded-r hover:bg-emerald-500 transition"
             >
-              Search
+              <FaSearch/>
             </button>
           </div>
         </form>
@@ -420,7 +413,7 @@ const Navbar = () => {
       {/* Overlay */}
       {drawerOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-30 z-40 md:hidden"
+          className="fixed inset-0 bg-opacity-100 z-40 md:hidden"
           onClick={() => setDrawerOpen(false)}
         />
       )}
