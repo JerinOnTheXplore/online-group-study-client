@@ -8,7 +8,7 @@ const AllAssignments = () => {
  const [assignments, setAssignments] = useState(loadedAssignments);
     return (
         <div>
-         <div className='pt-36 bg-gradient-to-r from-purple-500 to-cyan-500'>
+         <div className='pt-36'>
           <Assignments assignments={assignments}
           setAssignments={setAssignments}
           >

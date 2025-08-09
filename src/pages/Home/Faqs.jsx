@@ -38,7 +38,7 @@ const Faqs = () => {
   return (
     <section className="py-12 bg-white">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-600 mb-12 text-center">
+        <h2 className="text-2xl lg:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-emerald-500 to-emerald-600 mb-12 text-center">
           Frequently Asked Questions
         </h2>
 

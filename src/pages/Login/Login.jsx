@@ -88,7 +88,7 @@ const Login = () => {
   <div className="hero-overlay"></div>
   
   <div className="hero-content flex-col lg:flex-row">
-    <div className="flex justify-center items-center min-h-screen px-4 py-12">
+    <div className="flex  items-center min-h-screen px-4 py-12">
     <div className="w-full max-w-md bg-white/70 backdrop-blur-lg border shadow-xl  p-8 mt-36 rounded-tr-[60px] rounded-tl-[50px] rounded-br-[50px] border-purple-400 to-blue-400 border-s-8 border-b-8">
     <h2 className="text-3xl font-bold text-center text-purple-800 mb-6">
     LogIn to Your Account
@@ -156,9 +156,9 @@ const Login = () => {
       "#38bdf8"
         ]}}
         transition={{ duration: 4, repeat: Infinity }}
-      className="text-4xl md:text-5xl font-bold  drop-shadow-lg text-white">Good to see you again!<br/> Let’s get learning.</motion.h1>
+      className="text-2xl md:text-4xl font-bold  drop-shadow-lg text-white">Good to see you again!<br/> Let’s get learning.</motion.h1>
       <p className="py-6 text-base md:text-xl lg:text-xl text-stone-100 font-medium">
-       Learning becomes powerful when shared. <br /> At EduMates, we believe in  growing together. <br /> LogIn to access your study groups, collaborate on assignments,<br /> and support each other's success.
+       Learning becomes powerful when shared. <br /> At EduMates, we believe in  growing together. <br /> LogIn to access your study groups, collaborate <br></br> on assignments,and support each other's success.
       </p>
     </div>
   </div>
