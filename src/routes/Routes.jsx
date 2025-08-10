@@ -15,6 +15,10 @@ import MySubmission from "../pages/Home/MySubmission";
 import PendingAssignment from "../pages/Home/PendingAssignment";
 import PrivateRoute from "../provider/PrivateRoute";
 import Error from "../pages/Home/Error";
+import NutritionQuiz from "../pages/Home/NutritionQuiz";
+import DiscussionPage from "../pages/Home/DiscussionPage";
+import NutritionNotes from "../pages/Home/NutritionNotes";
+import HelpSupport from "../pages/Home/HelpSupport";
 
 
 
@@ -31,6 +35,22 @@ const router = createBrowserRouter([
         path: "/assignments",
         Component:AllAssignments,
         loader: () =>fetch('https://online-group-study-server-delta.vercel.app/assignments').then(res=>res.json()),
+      },
+      {
+        path:"/quiz",
+        Component:NutritionQuiz,
+      },
+      {
+        path:"/discussion",
+        Component:DiscussionPage,
+      },
+      {
+        path:"/support",
+        Component:HelpSupport,
+      },
+      {
+        path:"/notes",
+        Component:NutritionNotes,
       },
       {
         path: "/create-assignment",

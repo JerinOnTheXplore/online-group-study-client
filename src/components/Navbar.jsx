@@ -3,7 +3,6 @@ import { useState, useEffect, useContext } from "react";
 
 import {
   FiBookOpen,
-  FiFileText,
   FiUsers,
   FiLogIn,
   FiLogOut,
@@ -14,12 +13,12 @@ import {
   FiCheckSquare,
   FiClock,
   FiGrid,
-  FiSettings,
 } from "react-icons/fi";
 
-import { FaBookOpen, FaChalkboardTeacher, FaGraduationCap, FaSearch, FaUserPlus } from "react-icons/fa";
+import { FaBookOpen, FaChalkboardTeacher, FaGraduationCap, FaNotesMedical, FaSearch, FaUserPlus } from "react-icons/fa";
 
 import { AuthContext } from "../provider/AuthContext";
+import { RiCustomerService2Fill } from "react-icons/ri";
 
 const Navbar = () => {
   const [dateTime, setDateTime] = useState(new Date());
@@ -72,7 +71,7 @@ const Navbar = () => {
       </NavLink>
 
       <NavLink
-        to="/resources"
+        to="/support"
         className={({ isActive }) =>
           `px-3 py-2 rounded flex items-center gap-1 ${
             isActive
@@ -81,7 +80,7 @@ const Navbar = () => {
           }`
         }
       >
-        <FiFileText /> Resources
+        <RiCustomerService2Fill /> HelpSupport
       </NavLink>
 
       <NavLink
@@ -145,7 +144,7 @@ const Navbar = () => {
 
       {/* New relevant item */}
       <NavLink
-        to="/settings"
+        to="/notes"
         className={({ isActive }) =>
           `px-3 py-2 rounded flex items-center gap-1 ${
             isActive
@@ -155,7 +154,7 @@ const Navbar = () => {
         }
         onClick={() => setDashboardMenuOpen(false)}
       >
-        <FiSettings /> Settings
+        <FaNotesMedical/> Personal Notes
       </NavLink>
     </>
   );
