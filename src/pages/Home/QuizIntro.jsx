@@ -7,7 +7,7 @@ const QuizIntro = () => {
   return (
     <div className="max-w-7xl mx-auto rounded-lg p-10 my-16 text-center">
       <h1 className="text-2xl md:text-3xl font-extrabold mb-6 text-emerald-700 tracking-wide">
-        Test Your Nutrition IQ! 🥦🍎
+        Test Your IQ!
       </h1>
       <p className="text-gray-700 text-lg mb-8 leading-relaxed">
         Are you ready to challenge your knowledge on vitamins, minerals, and healthy eating? 

@@ -19,6 +19,8 @@ import { FaBookOpen, FaChalkboardTeacher, FaGraduationCap, FaNotesMedical, FaSea
 
 import { AuthContext } from "../provider/AuthContext";
 import { RiCustomerService2Fill } from "react-icons/ri";
+import { GiPuzzle } from "react-icons/gi";
+import NavLinkWithLoading from "../pages/Home/NavLinkWithLoading";
 
 const Navbar = () => {
   const [dateTime, setDateTime] = useState(new Date());
@@ -57,7 +59,7 @@ const Navbar = () => {
         <FiHome /> Home
       </NavLink>
 
-      <NavLink
+      <NavLinkWithLoading
         to="/assignments"
         className={({ isActive }) =>
           `px-3 py-2 rounded flex items-center gap-1 ${
@@ -68,7 +70,7 @@ const Navbar = () => {
         }
       >
         <FiBookOpen /> Assignments
-      </NavLink>
+      </NavLinkWithLoading>
 
       <NavLink
         to="/support"
@@ -84,7 +86,7 @@ const Navbar = () => {
       </NavLink>
 
       <NavLink
-        to="/community"
+        to="/blogs"
         className={({ isActive }) =>
           `px-3 py-2 rounded flex items-center gap-1 ${
             isActive
@@ -93,7 +95,7 @@ const Navbar = () => {
           }`
         }
       >
-        <FiUsers /> Community
+        <FiUsers /> BlogPosts
       </NavLink>
     </>
   );
@@ -155,6 +157,19 @@ const Navbar = () => {
         onClick={() => setDashboardMenuOpen(false)}
       >
         <FaNotesMedical/> Personal Notes
+      </NavLink>
+      <NavLink
+        to="/minigames"
+        className={({ isActive }) =>
+          `px-3 py-2 rounded flex items-center gap-1 ${
+            isActive
+              ? "bg-emerald-500 text-white"
+              : "hover:bg-emerald-500 hover:text-white"
+          }`
+        }
+        onClick={() => setDashboardMenuOpen(false)}
+      >
+        <GiPuzzle /> MiniGamesFunFacts
       </NavLink>
     </>
   );
@@ -371,7 +386,7 @@ const Navbar = () => {
               <NavLink
                 to="/login"
                 onClick={() => setDrawerOpen(false)}
-                className="flex items-center gap-2 px-3 py-2 bg-green-600 rounded-md hover:bg-green-700 transition text-white"
+                className="flex items-center gap-2 px-3 py-2 bg-emerald-600 rounded-md hover:bg-emerald-700 transition text-white"
               >
                 <FiLogIn /> Login
               </NavLink>
@@ -400,7 +415,7 @@ const Navbar = () => {
 
               <button
                 onClick={handleLogout}
-                className="mt-6 flex items-center gap-2 px-3 py-2 bg-red-600 rounded hover:bg-red-700 text-white transition"
+                className="mt-6 flex items-center gap-2 px-3 py-2 bg-emerald-600 rounded hover:bg-emerald-700 text-white transition"
               >
                 <FiLogOut /> Logout
               </button>

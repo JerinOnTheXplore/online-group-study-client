@@ -58,7 +58,14 @@ const UpdateAssignment = () => {
 
   return (
     <div className="min-h-screen  flex items-center justify-center px-4">
+      
       <div className="pt-28 pb-16 px-6 max-w-7xl mx-auto bg-white rounded shadow-lg">
+        <button
+        onClick={() => navigate(-1)} 
+        className="mb-6 text-emerald-600 hover:underline font-semibold"
+      >
+        ← Go Back
+      </button>
         <h2 className="text-3xl font-bold text-center text-emerald-700 mb-8">Update Assignment</h2>
         <form onSubmit={handleUpdate} className="space-y-5">
           <input

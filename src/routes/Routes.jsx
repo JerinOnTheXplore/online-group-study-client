@@ -19,6 +19,8 @@ import NutritionQuiz from "../pages/Home/NutritionQuiz";
 import DiscussionPage from "../pages/Home/DiscussionPage";
 import NutritionNotes from "../pages/Home/NutritionNotes";
 import HelpSupport from "../pages/Home/HelpSupport";
+import MiniGamesFunFacts from "../pages/Home/MiniGamesFunFacts";
+import BlogPosts from "../pages/Home/BlogPosts";
 
 
 
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
       {
         path:"/notes",
         Component:NutritionNotes,
+      },
+      {
+        path:"/minigames",
+        Component:MiniGamesFunFacts,
+      },
+      {
+        path:"/blogs",
+        Component:BlogPosts,
       },
       {
         path: "/create-assignment",

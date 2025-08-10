@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const Error = () => {
     return (
         <div>
-        <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 text-white px-6">
+        <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-6">
       
       <h1 className="text-7xl md:text-9xl font-extrabold mb-6 text-center drop-shadow-lg">
         Oops! Page Not Found
@@ -16,7 +16,7 @@ const Error = () => {
       
       <Link
         to="/"
-        className="bg-white text-purple-700 font-semibold px-8 py-3 rounded-full hover:bg-pink-100 transition duration-300 shadow-lg"
+        className="bg-white text-emerald-700 font-semibold px-8 py-3 rounded-full hover:bg-pink-100 transition duration-300 shadow-lg"
       >
         Go Home
       </Link>
