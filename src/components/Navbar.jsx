@@ -167,7 +167,7 @@ const Navbar = () => {
         <div className="max-w-[1400px] mx-6 lg:mx-16 px-6 md:px-12 py-4 flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0 min-h-[80px]">
           <div className="flex flex-col md:flex-row md:items-center space-y-3 md:space-y-0 md:space-x-8">
             <Link to="/" className="flex items-center gap-3">
-              <div className="text-emerald-800"><FaChalkboardTeacher size={30} title="Teaching" /></div>
+              <div className="text-emerald-800"><FaChalkboardTeacher size={25} title="Teaching" /></div>
               <span className="font-bold text-2xl text-emerald-800 select-none mr-2">
                 𝓮𝓭𝓾𝓶𝓪𝓽𝓮𝓼
               </span>
