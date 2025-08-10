@@ -28,7 +28,7 @@ const Assignments = ({ assignments, setAssignments }) => {
     : sortedAssignments.slice(0, 8);
 
   return (
-    <div className="px-4 py-6 max-w-7xl mx-auto">
+    <div className="px-4  max-w-7xl mx-auto mb-16">
       <h2 className="text-3xl font-bold text-center text-emerald-700 mb-6">
         Assignments
       </h2>
@@ -58,7 +58,7 @@ const Assignments = ({ assignments, setAssignments }) => {
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {displayAssignments.map((assignment, i) => (
           <AssignmentCard
             key={assignment._id}
@@ -73,7 +73,10 @@ const Assignments = ({ assignments, setAssignments }) => {
       {sortedAssignments.length > 8 && (
         <div className="text-center mt-6">
           <button
-            onClick={() => setShowAll(!showAll)}
+            onClick={() =>{
+         setShowAll(!showAll);
+         window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
             className="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition"
           >
             {showAll ? "Show Less" : "Show More"}

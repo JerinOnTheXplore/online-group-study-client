@@ -116,7 +116,7 @@ const Navbar = () => {
       </NavLink>
 
       <NavLink
-        to="/my-attempted"
+        to="/my-submissions"
         className={({ isActive }) =>
           `px-3 py-2 rounded flex items-center gap-1 ${
             isActive
@@ -211,7 +211,7 @@ const Navbar = () => {
             </span>
           </div>
 
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden  flex items-center">
             <button
               onClick={() => setDrawerOpen(!drawerOpen)}
               className="text-emerald-700 border border-emerald-600 rounded px-4 py-1 text-sm font-semibold hover:bg-emerald-600 hover:text-white transition flex items-center gap-2"
@@ -311,7 +311,7 @@ const Navbar = () => {
 
       {/* Drawer for small/medium screens */}
       <div
-        className={`fixed top-0 right-0 bottom-0 bg-white shadow-lg border-l border-gray-200 z-50 transition-transform duration-300 ease-in-out overflow-auto w-72 md:hidden ${
+        className={`fixed top-0 right-0 bottom-0  bg-white shadow-lg border-l max-w-2xl border-gray-200 z-50 transition-transform duration-300 ease-in-out overflow-auto  md:hidden ${
           drawerOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -391,7 +391,7 @@ const Navbar = () => {
                 <img
                   src={user.photoURL || "https://i.pravatar.cc/50"}
                   alt={user.displayName || "User"}
-                  className="w-12 h-12 rounded-full border-2 border-indigo-400"
+                  className="w-12 h-12 rounded-full border-2 border-emerald-400"
                 />
                 <span className="font-semibold">{user.displayName || "User"}</span>
               </div>

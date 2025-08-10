@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { Link } from "react-router";
-
+import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthContext";
 
 const AssignmentCard = ({ assignment, index, setAssignments }) => {
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const { thumbnail, title, marks, difficulty, objective, _id, createEmail } =
     assignment;
@@ -13,7 +13,7 @@ const AssignmentCard = ({ assignment, index, setAssignments }) => {
     if (!user || user.email !== createEmail) {
       Swal.fire(
         "Unauthorized",
-        "You must be the creator to delete this assignment.",
+        "You are not the creator of this assignment.",
         "error"
       );
       return;
@@ -44,64 +44,58 @@ const AssignmentCard = ({ assignment, index, setAssignments }) => {
       } else {
         Swal.fire(
           "Error!",
-          data.message || "You are not authorized to delete this.",
+          data.message || "Failed to delete the assignment.",
           "error"
         );
       }
     }
   };
 
+  const handleUpdate = () => {
+    if (!user) {
+      Swal.fire(
+        "Login Required",
+        "Please login to update assignments.",
+        "warning"
+      );
+      return;
+    }
+    navigate(`/assignments/update/${_id}`);
+  };
+
   return (
-    <div className="bg-stone-100 rounded shadow-md p-4 flex flex-col h-full border border-emerald-200">
+    <div className="bg-stone-100 rounded shadow-md  flex flex-col h-full border border-emerald-200">
       <img
         src={thumbnail}
         alt={title}
         className="rounded w-full h-32 object-cover"
       />
-      <h2 className="text-lg font-bold mt-3 text-emerald-700">{title}</h2>
-      <p className="text-sm text-gray-600">{objective}</p>
-      <div className="text-sm mt-2 font-semibold flex justify-between">
+      <h2 className="text-xl md:text-lg font-medium mt-3 p-4 text-emerald-700">{title}</h2>
+      <p className="text-sm text-gray-600 p-4">{objective}</p>
+      <div className="text-sm mt-2 font-semibold flex justify-between p-4">
         <span>Marks: {marks}</span>
         <span>Level: {difficulty}</span>
       </div>
-      <div className="mt-3 flex justify-between text-sm font-medium">
+      <div className="mt-3 flex justify-center gap-2 text-xs md:text-sm font-normal px-5 py-4">
         <Link
           to={`/assignments/${_id}`}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="text-emerald-600 hover:underline"
         >
           View
         </Link>
-        {user?.email === createEmail ? (
-          <>
-            <Link
-              to={`/assignments/update/${_id}`}
-              className="text-blue-600 hover:underline"
-            >
-              Update
-            </Link>
-            <button
-              onClick={handleDelete}
-              className="text-red-500 hover:underline"
-            >
-              Delete
-            </button>
-          </>
-        ) : (
-          <>
-            <span
-              className="text-gray-400 cursor-not-allowed"
-              title="Only the creator can update this."
-            >
-              Update
-            </span>
-            <span
-              className="text-gray-400 cursor-not-allowed"
-              title="Only the creator can delete this."
-            >
-              Delete
-            </span>
-          </>
-        )}
+        <button
+          onClick={handleUpdate}
+          className="text-blue-600 hover:underline"
+        >
+          Update
+        </button>
+        <button
+          onClick={handleDelete}
+          className="text-red-500 hover:underline"
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
